@@ -10,7 +10,10 @@ public class UserCredential {
     private String username;
     @Column(nullable = false)
     private String password;
-    @OneToOne(mappedBy = "userCredential")
+    @OneToOne(
+            mappedBy = "userCredential",
+            cascade = CascadeType.PERSIST,
+            fetch = FetchType.LAZY)
     Student student;
 
     public String getUsername() {

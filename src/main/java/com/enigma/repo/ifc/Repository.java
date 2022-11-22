@@ -21,7 +21,7 @@ public abstract class Repository {
             em.getTransaction().rollback();
             throw new RuntimeException(e);
         } finally {
-            em.close();
+//            em.close();
         }
     }
 }

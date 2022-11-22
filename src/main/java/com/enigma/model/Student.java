@@ -26,7 +26,9 @@ public class Student {
     @Temporal(TemporalType.DATE)
     @Column(name = "birth_date")
     private Date birthDate;
-    private String major;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "major_id")
+    private Major major;
     @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "credential_id")
     private UserCredential userCredential;
@@ -71,11 +73,11 @@ public class Student {
         this.birthDate = birthDate;
     }
 
-    public String getMajor() {
+    public Major getMajor() {
         return major;
     }
 
-    public void setMajor(String major) {
+    public void setMajor(Major major) {
         this.major = major;
     }
 

@@ -4,7 +4,7 @@ import com.enigma.model.Student;
 
 import java.util.List;
 
-public interface IStudentRepo {
+public interface IStudent {
     void create(Student student);
     Student findOne(long id);
     List<Student> findAll(int page, int pageSize);

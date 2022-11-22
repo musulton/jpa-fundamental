@@ -1,14 +1,14 @@
 package com.enigma.repo.student;
 
 import com.enigma.model.Student;
-import com.enigma.repo.ifc.IStudentRepo;
+import com.enigma.repo.ifc.IStudent;
 import com.enigma.repo.ifc.Repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
 
-public class StudentRepo extends Repository implements IStudentRepo {
+public class StudentRepo extends Repository implements IStudent {
     public StudentRepo(EntityManager em) {
         super(em);
     }
