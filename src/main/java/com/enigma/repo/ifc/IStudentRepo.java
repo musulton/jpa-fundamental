@@ -1,4 +1,4 @@
-package com.enigma.repo.student;
+package com.enigma.repo.ifc;
 
 import com.enigma.model.Student;
 

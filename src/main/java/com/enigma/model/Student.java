@@ -27,6 +27,9 @@ public class Student {
     @Column(name = "birth_date")
     private Date birthDate;
     private String major;
+    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @JoinColumn(name = "credential_id")
+    private UserCredential userCredential;
 
     public Integer getStudentId() {
         return studentId;
@@ -74,6 +77,14 @@ public class Student {
 
     public void setMajor(String major) {
         this.major = major;
+    }
+
+    public UserCredential getUserCredential() {
+        return userCredential;
+    }
+
+    public void setUserCredential(UserCredential userCredential) {
+        this.userCredential = userCredential;
     }
 
     @Override

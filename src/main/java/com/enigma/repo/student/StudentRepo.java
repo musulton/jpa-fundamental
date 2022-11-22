@@ -1,31 +1,16 @@
 package com.enigma.repo.student;
 
 import com.enigma.model.Student;
+import com.enigma.repo.ifc.IStudentRepo;
+import com.enigma.repo.ifc.Repository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
 import java.util.List;
-import java.util.function.Consumer;
 
-public class StudentRepo implements IStudentRepo {
-    EntityManager em;
-
+public class StudentRepo extends Repository implements IStudentRepo {
     public StudentRepo(EntityManager em) {
-        this.em = em;
-    }
-
-    private void inTransaction(Consumer<EntityManager> consumer) {
-        try {
-            em.getTransaction().begin();
-            consumer.accept(em);
-            em.getTransaction().commit();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            em.getTransaction().rollback();
-            throw new RuntimeException(e);
-        } finally {
-            em.close();
-        }
+        super(em);
     }
 
     public void create(Student student) {
