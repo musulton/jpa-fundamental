@@ -3,7 +3,9 @@ package com.enigma.model;
 import com.enigma.utils.Gender;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "m_student")
@@ -32,6 +34,13 @@ public class Student {
     @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "credential_id")
     private UserCredential userCredential;
+    @ManyToMany
+    @JoinTable(
+            name = "m_student_project",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id")
+    )
+    private List<GroupProject> groupProjects = new ArrayList<>();
 
     public Integer getStudentId() {
         return studentId;
@@ -89,6 +98,14 @@ public class Student {
         this.userCredential = userCredential;
     }
 
+    public List<GroupProject> getGroupProjects() {
+        return groupProjects;
+    }
+
+    public void setGroupProjects(List<GroupProject> groupProjects) {
+        this.groupProjects = groupProjects;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -96,9 +113,9 @@ public class Student {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", gender=" + gender +
-                ", major='" + major + '\'' +
                 ", birthDate=" + birthDate +
                 ", major=" + major +
+                ", userCredential=" + userCredential +
                 '}';
     }
 }

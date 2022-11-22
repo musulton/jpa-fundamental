@@ -1,4 +1,4 @@
-package com.enigma.repo.major;
+package com.enigma.repo.ifc;
 
 import com.enigma.model.Major;
 

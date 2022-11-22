@@ -1,6 +1,7 @@
 package com.enigma.repo.major;
 
 import com.enigma.model.Major;
+import com.enigma.repo.ifc.IMajor;
 import com.enigma.repo.ifc.Repository;
 import jakarta.persistence.EntityManager;
 
