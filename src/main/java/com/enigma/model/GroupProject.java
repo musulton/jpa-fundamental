@@ -10,11 +10,12 @@ import java.util.List;
 public class GroupProject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "project_id")
     private long projectId;
     @Column(name = "project_name", nullable = false, length = 50)
     private String projectName;
     @ManyToMany(mappedBy = "groupProjects")
-    private List<Student> students = new ArrayList<>();
+    private List<GroupProjectWithPoint> projectWithPoints = new ArrayList<>();
 
     public long getProjectId() {
         return projectId;
@@ -32,20 +33,20 @@ public class GroupProject {
         this.projectName = projectName;
     }
 
-    public List<Student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<Student> students) {
-        this.students = students;
-    }
-
     @Override
     public String toString() {
         return "GroupProject{" +
                 "projectId=" + projectId +
                 ", projectName='" + projectName + '\'' +
-                ", students=" + students +
+                ", projectWithPoints=" + projectWithPoints +
                 '}';
+    }
+
+    public List<GroupProjectWithPoint> getProjectWithPoints() {
+        return projectWithPoints;
+    }
+
+    public void setProjectWithPoints(List<GroupProjectWithPoint> projectWithPoints) {
+        this.projectWithPoints = projectWithPoints;
     }
 }

@@ -34,13 +34,8 @@ public class Student {
     @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinColumn(name = "credential_id")
     private UserCredential userCredential;
-    @ManyToMany
-    @JoinTable(
-            name = "m_student_project",
-            joinColumns = @JoinColumn(name = "student_id"),
-            inverseJoinColumns = @JoinColumn(name = "project_id")
-    )
-    private List<GroupProject> groupProjects = new ArrayList<>();
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List<GroupProjectWithPoint> projectWithPoints = new ArrayList<>();
 
     public Integer getStudentId() {
         return studentId;
@@ -98,12 +93,12 @@ public class Student {
         this.userCredential = userCredential;
     }
 
-    public List<GroupProject> getGroupProjects() {
-        return groupProjects;
+    public List<GroupProjectWithPoint> getProjectWithPoints() {
+        return projectWithPoints;
     }
 
-    public void setGroupProjects(List<GroupProject> groupProjects) {
-        this.groupProjects = groupProjects;
+    public void setProjectWithPoints(List<GroupProjectWithPoint> projectWithPoints) {
+        this.projectWithPoints = projectWithPoints;
     }
 
     @Override
